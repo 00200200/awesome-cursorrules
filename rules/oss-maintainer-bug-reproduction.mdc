@@ -17,7 +17,7 @@ This rule enforces reproducible, evidence-based debugging workflows for open-sou
 
 4. **Never Manufacture False Reproductions**: Do not edit production code or mock internal subsystems to force an error to trigger. If repeated executions yield divergent results, document the non-determinism rather than picking a convenient run.
 
-5. **Mandate Failing Test Replay Before Code Changes**: Write or extract a deterministic test case that reliably reproduces the failing condition (`pytest -q --tb=short -x`, `npm test -- --bail`, or `cargo test`). Verify the test fails on current `main` before writing a single line of production fix.
+5. **Mandate Failing Test Replay Before Code Changes**: Write or extract a deterministic test case that reliably reproduces the failing condition (`pytest -q --tb=short -x`, `npm test -- --bail`, or `cargo test`). Verify the test fails on the reported revision or target branch baseline (e.g. `main` or maintenance release branch) before writing a single line of production fix.
 
 6. **Verify the Fix and Prove No Regressions**: After applying the proposed bugfix, re-run the reproduction test to confirm it passes, then run the full existing test suite to verify no regressions were introduced.
 
